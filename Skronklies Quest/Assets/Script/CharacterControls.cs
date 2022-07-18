@@ -8,26 +8,27 @@ public class CharacterControls : MonoBehaviour
     private float movementSpeed = 5f;
     private float jumpVelocity = 10f;
 
+    public int health = 3;
+
     public Transform carrySpot;
     bool carryObject = false;
     GameObject carry = null;
+    bool facingRight = true;
 
     Rigidbody2D rb;
+
+
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        rb.freezeRotation = true;
     }
 
 
     void Update()
     {
         characterMovement();
-
-        //float horizontalInput = Input.GetAxis("Horizontal");
-        //float verticalInput = Input.GetAxis("Vertical");
-
-        //update the position
-        //transform.position = transform.position + new Vector3(horizontalInput * movementSpeed * Time.deltaTime, 0, 0);
 
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         if (Input.GetKeyDown(KeyCode.W) && IsGrounded() || Input.GetKeyDown(KeyCode.UpArrow) && IsGrounded())
@@ -50,12 +51,16 @@ public class CharacterControls : MonoBehaviour
     void characterMovement()
     {
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        {
             rb.velocity = new Vector2(-movementSpeed, rb.velocity.y);
+            facingRight = false;
+        }
         else
         {
             if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
             {
                 rb.velocity = new Vector2(+movementSpeed, rb.velocity.y);
+                facingRight = true;
             }
             else
             {
@@ -77,10 +82,14 @@ public class CharacterControls : MonoBehaviour
     void DropObject()
     {
         carry.transform.parent = null;
-        carry.transform.position = transform.position + Vector3.right + Vector3.right;
         carryObject = false;
         Rigidbody2D rb = carry.GetComponent<Rigidbody2D>();
         rb.isKinematic = false;
+        if(facingRight)
+            carry.transform.position = transform.position + new Vector3(1.5f, 0, 0);
+        else
+            carry.transform.position = transform.position - new Vector3(1.5f, 0, 0);
     }
 
+    
 }
