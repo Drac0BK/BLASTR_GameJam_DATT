@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterMover : MonoBehaviour
+public class CharacterControls : MonoBehaviour
 {
     // Update is called once per frame
     private float movementSpeed = 5f;
