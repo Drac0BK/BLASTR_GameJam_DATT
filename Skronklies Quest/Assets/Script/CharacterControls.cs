@@ -10,6 +10,7 @@ public class CharacterControls : MonoBehaviour
     [SerializeField] private float jumpVelocity = 10f;
     [SerializeField] private Animator skronkMover;
 
+
     public int health = 3;
 
     public GameObject skronkly;
@@ -18,7 +19,7 @@ public class CharacterControls : MonoBehaviour
     public Transform carrySpot;
     public bool carryObject = false;
     GameObject carry = null;
-    bool facingRight = true;
+    public bool facingRight = true;
 
     Rigidbody2D rb;
 
@@ -34,7 +35,7 @@ public class CharacterControls : MonoBehaviour
     void Update()
     {
         characterMovement();
-
+        Debug.Log(lifeTimer);
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         if (Input.GetKeyDown(KeyCode.W) && IsGrounded() || Input.GetKeyDown(KeyCode.UpArrow) && IsGrounded())
         {
@@ -45,7 +46,7 @@ public class CharacterControls : MonoBehaviour
         {
             PickUpObject();
         }
-        if (Input.GetKeyDown(KeyCode.Q) && carryObject == true)
+        if (Input.GetKeyDown(KeyCode.Q) && carryObject == true && CanDropObject())
         {
             DropObject();
         }
@@ -56,6 +57,9 @@ public class CharacterControls : MonoBehaviour
 
     private bool IsGrounded() { return transform.Find("GroundCheck").GetComponent<GroundCheck>().isGrounded; }
     private bool CanPickUp() { return transform.Find("PickUpCheck").GetComponent<PickUpObjectCheck>().CanPickUp; }
+
+    private bool CanDropObject() { return transform.Find("PickUpCheck").GetComponent<PickUpObjectCheck>().CanDropObject; }
+
     void characterMovement()
     {
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
@@ -94,6 +98,7 @@ public class CharacterControls : MonoBehaviour
         carryObject = false;
         Rigidbody2D rb = carry.GetComponent<Rigidbody2D>();
         rb.isKinematic = false;
+        Debug.Log(CanDropObject());
         if(facingRight)
             carry.transform.position = transform.position + new Vector3(1.5f, 0, 0);
         else
