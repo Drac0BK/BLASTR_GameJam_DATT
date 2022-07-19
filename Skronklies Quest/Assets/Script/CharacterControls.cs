@@ -20,7 +20,7 @@ public class CharacterControls : MonoBehaviour
 
     Rigidbody2D rb;
 
-
+    public float lifeTimer = 10.0f;
 
     private void Start()
     {
@@ -47,6 +47,10 @@ public class CharacterControls : MonoBehaviour
         {
             DropObject();
         }
+
+        lifeTimer -= Time.deltaTime;
+        Debug.Log(lifeTimer);
+
     }
 
     private bool IsGrounded() { return transform.Find("GroundCheck").GetComponent<GroundCheck>().isGrounded; }

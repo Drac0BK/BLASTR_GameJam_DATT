@@ -64,7 +64,7 @@ public class CreatureMovement : MonoBehaviour
     {
        if(collision.name == "Player")
         {
-            Debug.Log("IT WORKS");
+            collision.GetComponent<CharacterControls>().lifeTimer = 10.0f;
         }
     }
 }
