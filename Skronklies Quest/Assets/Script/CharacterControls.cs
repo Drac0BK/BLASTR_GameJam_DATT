@@ -118,6 +118,10 @@ public class CharacterControls : MonoBehaviour
         {
             transform.position = respawnPos.transform.position;
             skronkly.transform.position = respawnPos2.transform.position;
+            skronkly.transform.parent = null;
+            skronkly.GetComponent<Rigidbody2D>().isKinematic = false;
+            skronkMover.SetBool("Moving", true);
+            carryObject = false;
         }
     }
 

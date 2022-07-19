@@ -103,12 +103,14 @@ MonoBehaviour:
   movementSpeed: 10
   jumpVelocity: 10
   skronkMover: {fileID: 0}
+  slider: {fileID: 0}
   health: 3
   skronkly: {fileID: 0}
   respawnPos: {fileID: 0}
   respawnPos2: {fileID: 0}
   carrySpot: {fileID: 3744157635783146911}
   carryObject: 0
+  facingRight: 1
   lifeTimer: 10
 --- !u!50 &3744157634929947675
 Rigidbody2D:
@@ -362,4 +364,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   CanPickUp: 0
+  CanDropObject: 0
   pickUpObject: {fileID: 0}
+  pick1: {fileID: 3744157636234897034}
+  pick2: {fileID: 0}
