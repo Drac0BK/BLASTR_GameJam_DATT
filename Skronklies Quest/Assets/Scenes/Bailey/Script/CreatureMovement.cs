@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CreatureMovement : MonoBehaviour
 {
     int direction = 0;
     float movementSpeed = 1.0f;
     Rigidbody2D rb = null;
+
+    public Slider slider;
 
     float timer = 3.0f;
 
@@ -16,13 +19,19 @@ public class CreatureMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         direction = Random.Range(0, 2);
         rb.freezeRotation = true;
+
+        slider.maxValue = 10;
+        slider.minValue = 0;
+        slider.value = timer;
+
     }
 
     private void Update()
     {
         if (transform.parent == null)
         {
-            if(timer < 10) timer = 10;
+            slider.gameObject.SetActive(false);
+            if (timer < 10) timer = 10;
 
             if (direction == 0)
             {
@@ -31,13 +40,13 @@ public class CreatureMovement : MonoBehaviour
             else if (direction == 1)
             {
                 rb.velocity = new Vector2(movementSpeed, rb.velocity.y);
-
             }
         }
         else
         {
-            Debug.Log(timer);
+            slider.gameObject.SetActive(true);
             timer-= Time.deltaTime;
+            slider.value = timer;
             rb.velocity = new Vector2(0,rb.velocity.y);
             if(timer < 0 )
             {
@@ -54,7 +63,15 @@ public class CreatureMovement : MonoBehaviour
         {
             if(collider.name == "Player")
             {
-               collider.GetComponent<CharacterControls>().lifeTimer = 10.5f;
+                collider.GetComponent<CharacterControls>().lifeTimer += Time.deltaTime;
+                collider.GetComponent<CharacterControls>().inSafety = true;
+                if (collider.GetComponent<CharacterControls>().lifeTimer > 10)
+                    collider.GetComponent<CharacterControls>().lifeTimer = 10.1f;
+                return;
+            }
+            else
+            {
+                GameObject.Find("Player").GetComponent<CharacterControls>().inSafety = false;
             }
         }
     }
@@ -71,13 +88,11 @@ public class CreatureMovement : MonoBehaviour
         {
             transform.localScale = new Vector3(-1, 1, 1);
             direction = 1;
-            Debug.Log("Hity");
         }
         else if (direction == 1)
         {
             transform.localScale = new Vector3(1, 1, 1);
             direction = 0;
-            Debug.Log("hurty");
         }
     }
 

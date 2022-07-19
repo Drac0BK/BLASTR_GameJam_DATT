@@ -11,6 +11,7 @@ public class CharacterControls : MonoBehaviour
     [SerializeField] private float jumpVelocity = 10f;
     [SerializeField] private Animator skronkMover;
 
+    private Animator playerAnimator;
     public Slider slider;
 
     public int health = 3;
@@ -26,12 +27,15 @@ public class CharacterControls : MonoBehaviour
     Rigidbody2D rb;
 
     public float lifeTimer = 10.0f;
+    public bool inSafety = false;
 
     private void Start()
     {
+        playerAnimator = GetComponent<Animator>();
         slider.maxValue = 10;
         slider.minValue = 0;
         slider.value = lifeTimer;
+
         rb = GetComponent<Rigidbody2D>();
         rb.freezeRotation = true;
     }
@@ -41,7 +45,6 @@ public class CharacterControls : MonoBehaviour
     {
         slider.value = lifeTimer;
         characterMovement();
-        Debug.Log(lifeTimer);
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         if (Input.GetKeyDown(KeyCode.W) && IsGrounded() || Input.GetKeyDown(KeyCode.UpArrow) && IsGrounded())
         {
@@ -56,9 +59,19 @@ public class CharacterControls : MonoBehaviour
         {
             DropObject();
         }
-
+        playerAnimator.SetBool("IsCarrying", carryObject);
+        if(!inSafety)
         lifeTimer -= Time.deltaTime;
-
+        if(lifeTimer < 0)
+        {
+            transform.position = respawnPos.transform.position;
+            skronkly.transform.position = respawnPos2.transform.position;
+            skronkly.transform.parent = null;
+            skronkly.GetComponent<Rigidbody2D>().isKinematic = false;
+            skronkMover.SetBool("Moving", true);
+            carryObject = false;
+            lifeTimer = 10.0f;
+        }
     }
 
     private bool IsGrounded() { return transform.Find("GroundCheck").GetComponent<GroundCheck>().isGrounded; }
@@ -70,6 +83,7 @@ public class CharacterControls : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
+            playerAnimator.SetBool("IsMoving", true);
             rb.velocity = new Vector2(-movementSpeed, rb.velocity.y);
             facingRight = false;
         }
@@ -77,14 +91,17 @@ public class CharacterControls : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
             {
+                playerAnimator.SetBool("IsMoving", true);
                 rb.velocity = new Vector2(+movementSpeed, rb.velocity.y);
                 facingRight = true;
             }
             else
             {
+                playerAnimator.SetBool("IsMoving", false);
                 rb.velocity = new Vector2(0, rb.velocity.y);
             }
         }
+        playerAnimator.SetBool("IsRight", facingRight);
     }
 
     void PickUpObject()
@@ -96,6 +113,7 @@ public class CharacterControls : MonoBehaviour
         rb.isKinematic = true;
         carryObject = true;
         skronkMover.SetBool("Moving", false);
+        
     }
 
     void DropObject()
