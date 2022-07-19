@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class CharacterControls : MonoBehaviour
 {
     // Update is called once per frame
     [SerializeField] private float movementSpeed = 5f;
     [SerializeField] private float jumpVelocity = 10f;
+    [SerializeField] private Animator skronkMover;
 
     public int health = 3;
 
@@ -14,7 +16,7 @@ public class CharacterControls : MonoBehaviour
     public Transform respawnPos;
     public Transform respawnPos2;
     public Transform carrySpot;
-    bool carryObject = false;
+    public bool carryObject = false;
     GameObject carry = null;
     bool facingRight = true;
 
@@ -49,7 +51,6 @@ public class CharacterControls : MonoBehaviour
         }
 
         lifeTimer -= Time.deltaTime;
-        Debug.Log(lifeTimer);
 
     }
 
@@ -84,6 +85,7 @@ public class CharacterControls : MonoBehaviour
         Rigidbody2D rb = carry.GetComponent<Rigidbody2D>();
         rb.isKinematic = true;
         carryObject = true;
+        skronkMover.SetBool("Moving", false);
     }
 
     void DropObject()
@@ -96,6 +98,7 @@ public class CharacterControls : MonoBehaviour
             carry.transform.position = transform.position + new Vector3(1.5f, 0, 0);
         else
             carry.transform.position = transform.position - new Vector3(1.5f, 0, 0);
+        skronkMover.SetBool("Moving", true);
     }
 
     void OnTriggerEnter2D(Collider2D other)

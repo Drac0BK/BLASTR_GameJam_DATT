@@ -15,12 +15,15 @@ public class CreatureMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         direction = Random.Range(0, 2);
+        rb.freezeRotation = true;
     }
 
     private void Update()
     {
         if (transform.parent == null)
         {
+            if(timer < 10) timer = 10;
+
             if (direction == 0)
             {
                 rb.velocity = new Vector2(-movementSpeed, rb.velocity.y);
@@ -39,9 +42,11 @@ public class CreatureMovement : MonoBehaviour
             if(timer < 0 )
             {
                 transform.position = transform.parent.position + new Vector3(1.5f, 0, 0);
+                transform.parent.GetComponent<CharacterControls>().carryObject = false;
                 transform.parent = null;
                 rb.isKinematic = false;
                 //to go in the opposite direction than intitially //rb.velocity = -rb.velocity;
+                timer = 10.0f;
             }
         }
     }
@@ -51,11 +56,13 @@ public class CreatureMovement : MonoBehaviour
     {
         if (direction == 0)
         {
+            transform.localScale = new Vector3(-1, 1, 1);
             direction = 1;
             Debug.Log("Hity");
         }
         else if (direction == 1)
         {
+            transform.localScale = new Vector3(1, 1, 1);
             direction = 0;
             Debug.Log("hurty");
         }
