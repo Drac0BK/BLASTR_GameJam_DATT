@@ -10,6 +10,9 @@ public class CharacterControls : MonoBehaviour
 
     public int health = 3;
 
+    public GameObject skronkly;
+    public Transform respawnPos;
+    public Transform respawnPos2;
     public Transform carrySpot;
     bool carryObject = false;
     GameObject carry = null;
@@ -91,5 +94,13 @@ public class CharacterControls : MonoBehaviour
             carry.transform.position = transform.position - new Vector3(1.5f, 0, 0);
     }
 
-    
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "DeathTrigger")
+        {
+            transform.position = respawnPos.transform.position;
+            skronkly.transform.position = respawnPos2.transform.position;
+        }
+    }
+
 }
