@@ -5,8 +5,8 @@ using UnityEngine;
 public class CharacterControls : MonoBehaviour
 {
     // Update is called once per frame
-    private float movementSpeed = 5f;
-    private float jumpVelocity = 10f;
+    [SerializeField] private float movementSpeed = 5f;
+    [SerializeField] private float jumpVelocity = 10f;
 
     public int health = 3;
 
