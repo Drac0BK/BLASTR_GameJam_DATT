@@ -5,13 +5,16 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
+  - enabled: 0
+    path: Assets/Scenes/Demo/MainMenu.unity
     guid: ec2039e1b2adb7d46b15b45e296d296b
-  - enabled: 1
-    path: Assets/Scenes/PlayScene.unity
+  - enabled: 0
+    path: Assets/Scenes/Demo/PlayScene.unity
     guid: 70fa059a161872040b5f2ed3342abb2d
   - enabled: 1
-    path: Assets/Scenes/EndScene.unity
+    path: Assets/Scenes/Bailey/Bailey_Scene.unity
+    guid: 9d96d299e7193b74ba5666c6644d96a7
+  - enabled: 1
+    path: Assets/Scenes/Demo/EndScene.unity
     guid: c45a64db8a491614fabbac435acfc32b
   m_configObjects: {}

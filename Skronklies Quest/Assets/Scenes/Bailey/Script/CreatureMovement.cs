@@ -80,11 +80,11 @@ public class CreatureMovement : MonoBehaviour
         }
     }
 
-    //private void OnDrawGizmosSelected()
-    //{
-    //    Gizmos.color = Color.yellow;
-    //    Gizmos.DrawSphere(transform.position, 2.0f);
-    //}
+    
+    
+    
+    
+    
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
