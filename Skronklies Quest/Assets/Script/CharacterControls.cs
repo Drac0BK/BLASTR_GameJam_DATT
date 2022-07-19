@@ -142,5 +142,8 @@ public class CharacterControls : MonoBehaviour
             carryObject = false;
         }
     }
-
+    public void Shmoving()
+    {
+        skronkMover.SetBool("Moving", true);
+    }
 }

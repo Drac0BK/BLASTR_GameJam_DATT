@@ -50,10 +50,14 @@ public class CreatureMovement : MonoBehaviour
             rb.velocity = new Vector2(0,rb.velocity.y);
             if(timer < 0 )
             {
-                transform.position = transform.parent.position + new Vector3(1.5f, 0, 0);
+                if (!GameObject.Find("Player").GetComponent<CharacterControls>().facingRight)
+                    transform.position = transform.parent.position + new Vector3(1.5f, 0, 0);
+                else
+                    transform.position = transform.parent.position + new Vector3(-1.5f, 0, 0);
                 transform.parent.GetComponent<CharacterControls>().carryObject = false;
                 transform.parent = null;
                 rb.isKinematic = false;
+                GameObject.Find("Player").GetComponent<CharacterControls>().Shmoving();
                 //to go in the opposite direction than intitially //rb.velocity = -rb.velocity;
                 timer = 10.0f;
             }
