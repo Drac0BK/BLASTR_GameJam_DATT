@@ -100,6 +100,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f2713c140544e8429a55eb635570ced, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementSpeed: 10
+  jumpVelocity: 10
   health: 3
   carrySpot: {fileID: 3744157635783146911}
 --- !u!50 &3744157634929947675
