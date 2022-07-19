@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations;
+using UnityEngine.UI;
 
 public class CharacterControls : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class CharacterControls : MonoBehaviour
     [SerializeField] private float jumpVelocity = 10f;
     [SerializeField] private Animator skronkMover;
 
+    public Slider slider;
 
     public int health = 3;
 
@@ -27,6 +29,9 @@ public class CharacterControls : MonoBehaviour
 
     private void Start()
     {
+        slider.maxValue = 10;
+        slider.minValue = 0;
+        slider.value = lifeTimer;
         rb = GetComponent<Rigidbody2D>();
         rb.freezeRotation = true;
     }
@@ -34,6 +39,7 @@ public class CharacterControls : MonoBehaviour
 
     void Update()
     {
+        slider.value = lifeTimer;
         characterMovement();
         Debug.Log(lifeTimer);
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
@@ -100,9 +106,9 @@ public class CharacterControls : MonoBehaviour
         rb.isKinematic = false;
         Debug.Log(CanDropObject());
         if(facingRight)
-            carry.transform.position = transform.position + new Vector3(1.5f, 0, 0);
+            carry.transform.position = transform.position + new Vector3(0.5f, 0, 0);
         else
-            carry.transform.position = transform.position - new Vector3(1.5f, 0, 0);
+            carry.transform.position = transform.position - new Vector3(0.5f, 0, 0);
         skronkMover.SetBool("Moving", true);
     }
 

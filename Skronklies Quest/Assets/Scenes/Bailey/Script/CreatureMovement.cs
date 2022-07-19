@@ -49,21 +49,21 @@ public class CreatureMovement : MonoBehaviour
                 timer = 10.0f;
             }
         }
-        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, 5.0f);
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, 2.0f);
         foreach (var collider in hitColliders)
         {
             if(collider.name == "Player")
             {
-               collider.GetComponent<CharacterControls>().lifeTimer = 10.0f;
+               collider.GetComponent<CharacterControls>().lifeTimer = 10.5f;
             }
         }
     }
 
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawSphere(transform.position, 5.0f);
-    }
+    //private void OnDrawGizmosSelected()
+    //{
+    //    Gizmos.color = Color.yellow;
+    //    Gizmos.DrawSphere(transform.position, 2.0f);
+    //}
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -80,11 +80,5 @@ public class CreatureMovement : MonoBehaviour
             Debug.Log("hurty");
         }
     }
-    //private void OnTriggerStay2D(Collider2D collision)
-    //{
-    //   if(collision.name == "Player")
-    //    {
-    //        collision.GetComponent<CharacterControls>().lifeTimer = 10.0f;
-    //    }
-    //}
+
 }
