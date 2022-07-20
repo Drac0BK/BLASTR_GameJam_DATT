@@ -157,7 +157,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 345, y: 254}
+  m_AnchoredPosition: {x: 345, y: 290}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &26462718
@@ -180,10 +180,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Move with A and D
+  m_text: 'Move with A and D or Left and Right arrow
 
 
-    Jump with W'
+    Jump with W or Up arrow'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cdba22d789bc39c4398b410f6ed46cc7, type: 2}
   m_sharedMaterial: {fileID: -5968098603026635730, guid: cdba22d789bc39c4398b410f6ed46cc7, type: 2}
@@ -475,7 +475,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -50, y: -196}
+  m_AnchoredPosition: {x: -50, y: -30}
   m_SizeDelta: {x: 99.5153, y: 93.4729}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &162402334
@@ -728,7 +728,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 345, y: -27}
+  m_AnchoredPosition: {x: 345, y: -50}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &411354734
@@ -862,7 +862,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 345, y: -210}
+  m_AnchoredPosition: {x: 345, y: -220}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &442447340
@@ -1379,7 +1379,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &766823557
 Transform:
   m_ObjectHideFlags: 0
@@ -1699,7 +1699,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -133.66217, y: 14.261902}
+  m_AnchoredPosition: {x: -110, y: 15}
   m_SizeDelta: {x: 413.277, y: 110.9363}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &965519318
@@ -1724,9 +1724,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Greetings Astronaut, you have been tasked to return this alien life form
     back to his home planet by United planets alliance. \n\nBe warned however that
-    this misson will be quite dangerous, so it is heavily advised that you keep as
-    close to the creature as possible or risk death. \n\nFarewell and good luck on
-    your mission."
+    this mission will be quite dangerous, so it is heavily advised that you keep
+    as close to the creature as possible, dare you risk death. \n\nFarewell, and
+    good luck on your mission."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cdba22d789bc39c4398b410f6ed46cc7, type: 2}
   m_sharedMaterial: {fileID: -5968098603026635730, guid: cdba22d789bc39c4398b410f6ed46cc7, type: 2}
@@ -3103,7 +3103,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1915366734
 Transform:
   m_ObjectHideFlags: 0
@@ -3447,7 +3447,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -50, y: -12}
+  m_AnchoredPosition: {x: -50, y: -200}
   m_SizeDelta: {x: 99.5153, y: 93.4729}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1988722428
