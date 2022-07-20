@@ -7,7 +7,7 @@ public class SceneChanger : MonoBehaviour
 {
     public void Start()
     {
-        SceneManager.LoadScene("PlayScene");
+        //SceneManager.LoadScene("PlayScene");
     }
 
     public void Menu()
