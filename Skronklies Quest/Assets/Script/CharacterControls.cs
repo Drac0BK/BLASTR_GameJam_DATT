@@ -14,6 +14,8 @@ public class CharacterControls : MonoBehaviour
     private Animator playerAnimator;
     public Slider slider;
 
+    public AudioSource jump;
+
     public int health = 3;
 
     public GameObject skronkly;
@@ -57,6 +59,7 @@ public class CharacterControls : MonoBehaviour
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         if (Input.GetKeyDown(KeyCode.W) && IsGrounded() || Input.GetKeyDown(KeyCode.UpArrow) && IsGrounded())
         {
+            jump.Play();
             rb.velocity = Vector2.up * jumpVelocity;
         }
 
@@ -168,4 +171,5 @@ public class CharacterControls : MonoBehaviour
     {
         skronkMover.SetBool("Moving", true);
     }
+    
 }
