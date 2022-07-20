@@ -29,6 +29,11 @@ public class CharacterControls : MonoBehaviour
     public float lifeTimer = 10.0f;
     public bool inSafety = false;
 
+    private float startFogAlpha = 0f, shrinkFogAlpha = 0f;
+
+    [SerializeField]
+    private SpriteRenderer fog, fogBackground;
+
     private void Start()
     {
         playerAnimator = GetComponent<Animator>();
@@ -38,11 +43,15 @@ public class CharacterControls : MonoBehaviour
 
         rb = GetComponent<Rigidbody2D>();
         rb.freezeRotation = true;
+
+        fog.color = new Color(1, 1, 1, startFogAlpha);
+        fogBackground.color = new Color(1, 1, 1, startFogAlpha);
     }
 
 
     void Update()
     {
+        playerAnimator.SetBool("IsGrounded", IsGrounded());
         slider.value = lifeTimer;
         characterMovement();
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
@@ -61,7 +70,20 @@ public class CharacterControls : MonoBehaviour
         }
         playerAnimator.SetBool("IsCarrying", carryObject);
         if(!inSafety)
-        lifeTimer -= Time.deltaTime;
+        {
+            lifeTimer -= Time.deltaTime;
+
+            shrinkFogAlpha = (-lifeTimer/10) + 1;
+            fog.color = new Color(1, 1, 1, shrinkFogAlpha);
+            fogBackground.color = new Color(1, 1, 1, shrinkFogAlpha);
+
+        }
+        else
+        {
+            fog.color = new Color(1, 1, 1, startFogAlpha);
+            fogBackground.color = new Color(1, 1, 1, startFogAlpha);
+        }
+
         if(lifeTimer < 0)
         {
             transform.position = respawnPos.transform.position;
