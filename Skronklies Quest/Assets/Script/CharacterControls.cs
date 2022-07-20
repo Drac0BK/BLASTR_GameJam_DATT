@@ -34,7 +34,7 @@ public class CharacterControls : MonoBehaviour
     private float startFogAlpha = 0f, shrinkFogAlpha = 0f;
 
     [SerializeField]
-    private SpriteRenderer fog, fogBackground;
+    private SpriteRenderer fog;
 
     private void Start()
     {
@@ -47,7 +47,6 @@ public class CharacterControls : MonoBehaviour
         rb.freezeRotation = true;
 
         fog.color = new Color(1, 1, 1, startFogAlpha);
-        fogBackground.color = new Color(1, 1, 1, startFogAlpha);
     }
 
 
@@ -78,13 +77,11 @@ public class CharacterControls : MonoBehaviour
 
             shrinkFogAlpha = (-lifeTimer/10) + 1;
             fog.color = new Color(1, 1, 1, shrinkFogAlpha);
-            fogBackground.color = new Color(1, 1, 1, shrinkFogAlpha);
 
         }
         else
         {
             fog.color = new Color(1, 1, 1, startFogAlpha);
-            fogBackground.color = new Color(1, 1, 1, startFogAlpha);
         }
 
         if(lifeTimer < 0)
