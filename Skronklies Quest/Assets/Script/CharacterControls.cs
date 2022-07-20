@@ -43,6 +43,7 @@ public class CharacterControls : MonoBehaviour
 
     void Update()
     {
+        playerAnimator.SetBool("IsGrounded", IsGrounded());
         slider.value = lifeTimer;
         characterMovement();
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
