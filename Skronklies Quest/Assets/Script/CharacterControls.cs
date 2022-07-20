@@ -91,6 +91,7 @@ public class CharacterControls : MonoBehaviour
             skronkly.transform.position = respawnPos2.transform.position;
             skronkly.transform.parent = null;
             skronkly.GetComponent<Rigidbody2D>().isKinematic = false;
+            skronkly.GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
             skronkMover.SetBool("Moving", true);
             carryObject = false;
             lifeTimer = 10.0f;
@@ -133,6 +134,7 @@ public class CharacterControls : MonoBehaviour
         carry.transform.parent = transform;
         carry.transform.position = carrySpot.transform.position;
         Rigidbody2D rb = carry.GetComponent<Rigidbody2D>();
+
         rb.isKinematic = true;
         carryObject = true;
         skronkMover.SetBool("Moving", false);
@@ -161,8 +163,10 @@ public class CharacterControls : MonoBehaviour
             skronkly.transform.position = respawnPos2.transform.position;
             skronkly.transform.parent = null;
             skronkly.GetComponent<Rigidbody2D>().isKinematic = false;
+            skronkly.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
             skronkMover.SetBool("Moving", true);
             carryObject = false;
+            lifeTimer = 10.0f;
         }
     }
     public void Shmoving()
