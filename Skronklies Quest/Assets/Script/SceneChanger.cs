@@ -17,6 +17,12 @@ public class SceneChanger : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenu");
     }
+
+    public void HowToPlay()
+    {
+        SceneManager.LoadScene("HowToPlay");
+    }
+
     public void Win()
     {
         SceneManager.LoadScene("EndScene");
