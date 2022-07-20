@@ -26,9 +26,9 @@ public class EndPoint : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawCube(transform.position, new Vector2(1.0f, 3.0f));
-    }
+    //private void OnDrawGizmosSelected()
+    //{
+    //    Gizmos.color = Color.yellow;
+    //    Gizmos.DrawCube(transform.position, new Vector2(1.0f, 3.0f));
+    //}
 }

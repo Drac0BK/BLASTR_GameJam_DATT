@@ -14,6 +14,8 @@ public class CharacterControls : MonoBehaviour
     private Animator playerAnimator;
     public Slider slider;
 
+    public AudioSource jump;
+
     public int health = 3;
 
     public GameObject skronkly;
@@ -25,14 +27,14 @@ public class CharacterControls : MonoBehaviour
     public bool facingRight = true;
 
     Rigidbody2D rb;
-
+    public bool isGrounded = true;
     public float lifeTimer = 10.0f;
     public bool inSafety = false;
 
     private float startFogAlpha = 0f, shrinkFogAlpha = 0f;
 
     [SerializeField]
-    private SpriteRenderer fog, fogBackground;
+    private SpriteRenderer fog;
 
     private void Start()
     {
@@ -45,18 +47,19 @@ public class CharacterControls : MonoBehaviour
         rb.freezeRotation = true;
 
         fog.color = new Color(1, 1, 1, startFogAlpha);
-        fogBackground.color = new Color(1, 1, 1, startFogAlpha);
     }
 
 
     void Update()
     {
+        isGrounded = IsGrounded();
         playerAnimator.SetBool("IsGrounded", IsGrounded());
         slider.value = lifeTimer;
         characterMovement();
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         if (Input.GetKeyDown(KeyCode.W) && IsGrounded() || Input.GetKeyDown(KeyCode.UpArrow) && IsGrounded())
         {
+            jump.Play();
             rb.velocity = Vector2.up * jumpVelocity;
         }
 
@@ -75,13 +78,11 @@ public class CharacterControls : MonoBehaviour
 
             shrinkFogAlpha = (-lifeTimer/10) + 1;
             fog.color = new Color(1, 1, 1, shrinkFogAlpha);
-            fogBackground.color = new Color(1, 1, 1, shrinkFogAlpha);
 
         }
         else
         {
             fog.color = new Color(1, 1, 1, startFogAlpha);
-            fogBackground.color = new Color(1, 1, 1, startFogAlpha);
         }
 
         if(lifeTimer < 0)
@@ -168,4 +169,5 @@ public class CharacterControls : MonoBehaviour
     {
         skronkMover.SetBool("Moving", true);
     }
+    
 }
