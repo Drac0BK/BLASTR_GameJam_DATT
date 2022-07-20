@@ -5,12 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class SceneChanger : MonoBehaviour
 {
-    public GameObject instructions;
-    public GameObject story;
 
-    public void Start()
+    public void Play()
     {
-        //SceneManager.LoadScene("PlayScene");
+        SceneManager.LoadScene("PlayScene");
     }
 
     public void Menu()
@@ -31,18 +29,6 @@ public class SceneChanger : MonoBehaviour
     public void Quit()
     {
         Application.Quit();
-    }
-
-    public void Instructions()
-    {
-        instructions.SetActive(true);
-        story.SetActive(false);
-    }
-
-    public void Story()
-    {
-        story.SetActive(true);
-        instructions.SetActive(false);
     }
 
 }
