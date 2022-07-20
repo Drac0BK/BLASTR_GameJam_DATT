@@ -190,7 +190,7 @@ MonoBehaviour:
   jumpVelocity: 5
   skronkMover: {fileID: 0}
   slider: {fileID: 0}
-  jump: {fileID: 0}
+  jump: {fileID: 4315123253690350164}
   health: 3
   skronkly: {fileID: 0}
   respawnPos: {fileID: 0}
@@ -198,6 +198,7 @@ MonoBehaviour:
   carrySpot: {fileID: 3744157635783146911}
   carryObject: 0
   facingRight: 1
+  isGrounded: 1
   lifeTimer: 10
   inSafety: 0
   fog: {fileID: 245129107161159486}

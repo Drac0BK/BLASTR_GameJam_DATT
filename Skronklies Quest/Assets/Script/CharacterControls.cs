@@ -27,7 +27,7 @@ public class CharacterControls : MonoBehaviour
     public bool facingRight = true;
 
     Rigidbody2D rb;
-
+    public bool isGrounded = true;
     public float lifeTimer = 10.0f;
     public bool inSafety = false;
 
@@ -52,6 +52,7 @@ public class CharacterControls : MonoBehaviour
 
     void Update()
     {
+        isGrounded = IsGrounded();
         playerAnimator.SetBool("IsGrounded", IsGrounded());
         slider.value = lifeTimer;
         characterMovement();
